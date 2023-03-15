@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
+    //in ra
     public List<Product> getAll() {
         final String sql = "SELECT * FROM `products`";
 
@@ -40,7 +41,7 @@ public class ProductDAO {
 
         return productList;
     }
-
+// tim theo id
     public Product getById(long id) {
         final String sql = "SELECT * FROM `products` WHERE  `id` = " + id;
         Product p = null;
@@ -66,7 +67,7 @@ public class ProductDAO {
         }
         return p;
     }
-
+//them
     public void insert(Product p) {
         final String sql = String.format("INSERT  INTO `products` VALUES ( NULL,'%s','%d','%s','%s','%d' ) ",
                 p.getName(), p.getPrice(), p.getSize(), p.getColor(), p.getBrandId()
@@ -86,7 +87,7 @@ public class ProductDAO {
             e.printStackTrace();
         }
     }
-
+//sua
     public void update(Product product, long id) {
         Product tmp = getById(id);
         if (tmp == null) {
@@ -112,7 +113,7 @@ public class ProductDAO {
 
     }
 
-
+//xoa
     public void delete(long id) {
         Product product = getById(id);
         if (product == null) {

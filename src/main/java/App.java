@@ -55,6 +55,60 @@ public class App {
 
         productDAO.insert(p);
     }
+    private static void option3(Scanner in){
+        System.out.print("\tNhap id san pham muon xoa: ");
+        int id=Integer.parseInt(in.nextLine());
+        productDAO.delete(id);
+
+
+    }
+
+    private static void option7(){
+
+        List<Brand> brandList = brandDAO.getAll();
+        System.out.printf("%-20s %-20s %-20s", "STT", "Ten hang san xuat", "Xuat xu");
+        System.out.println();
+        for (int i=0; i< brandList.size(); i++) {
+            Brand b = brandList.get(i);
+            System.out.printf("%-20s %-20s %-20s\n", b.getId(), b.getName(), b.getAddress());
+        };
+    }
+
+    private static void option8(Scanner in){
+        Brand b = new Brand();
+        System.out.print("\tNhap ten hang: ");
+        b.setName(in.nextLine());
+        System.out.print("\tNhap noi xuat xu: ");
+        b.setAddress(in.nextLine());
+        brandDAO.insert(b);
+
+    }
+
+    private static void option9(Scanner in){
+        System.out.print("\tNhap id hang san pham muon xoa: ");
+        long id= Long.parseLong(in.nextLine());
+        brandDAO.delete(id);
+    }
+
+
+    private static void option4(Scanner in){
+        Product p = new Product();
+        System.out.print("Nhap id san pham can cap nhat: ");
+        long id = Long.parseLong(in.nextLine());
+        System.out.print("\tNhap ten san pham: ");
+        p.setName(in.nextLine());
+        System.out.print("\tNhap gia san pham: ");
+        p.setPrice(Integer.parseInt(in.nextLine()));
+        System.out.print("\tNhap size san pham: ");
+        p.setSize(in.nextLine());
+        System.out.print("\tNhap mau san pham: ");
+        p.setColor(in.nextLine());
+        System.out.print("\tNhap id hang san pham ");
+        p.setBrandId(in.nextLong());
+        in.close();
+        productDAO.update(p, id);
+
+    }
 
     public static void main(String[] args) {
 
@@ -84,18 +138,23 @@ public class App {
                     option2(in);
                     break;
                 case 3:
+                    option3(in);
                     break;
                 case 4:
+                    option4(in);
                     break;
                 case 5:
                     break;
                 case 6:
                     break;
                 case 7:
+                    option7();
                     break;
                 case 8:
+                    option8(in);
                     break;
                 case 9:
+                    option9(in);
                     break;
             }
 
